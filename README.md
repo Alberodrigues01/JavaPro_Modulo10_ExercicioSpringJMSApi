@@ -6,7 +6,7 @@ Para tanto é necessário implementar conexões com duas outras funcionalidades:
 Sendo que o MongoDB deve ser utilizado através da imagem no Docker. 
 Observar que o comando para instalar o MongoDB no Docker é:
 
-docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME= <seu username > -e MONGO_INITDB_ROOT_PASSWORD= <sua pasa sword>
+docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME= #seu username# -e MONGO_INITDB_ROOT_PASSWORD= #sua password# mongo
 
 Utilizar também a interface gráfica do MongoDB: Mongo Compass. Através da interface gráfica será possível visualizar a criação do banco de dados <database.name>
 e collections <@Documents>. Observar que deve ser usado os mesmos username e password que foram utilizados na instação do MongoDB no Docker para a criação
