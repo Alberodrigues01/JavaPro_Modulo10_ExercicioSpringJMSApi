@@ -2,25 +2,26 @@ package br.com.mentorama.SpringJMS_Api.controller;
 
 import br.com.mentorama.SpringJMS_Api.entities.FilmeAvaliacao;
 import br.com.mentorama.SpringJMS_Api.services.FilmeAvaliacaoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.CoreSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
 @RestController
 @RequestMapping("/filme")
 public class FilmeAvaliacaoController {
 
-    @Autowired
-    private FilmeAvaliacaoService filmesAvaliacaoService;
 
-    @Autowired
+    private FilmeAvaliacaoService filmesAvaliacaoService;
     private JmsTemplate jmsTemplate;
+
+    public FilmeAvaliacaoController(FilmeAvaliacaoService filmesAvaliacaoService,
+                                    JmsTemplate jmsTemplate){
+        this.filmesAvaliacaoService = filmesAvaliacaoService;
+        this.jmsTemplate = jmsTemplate;
+    }
 
     @PostMapping
     public Mono<ResponseEntity<Void>> create (@RequestBody FilmeAvaliacao filmeAvaliacao) {
@@ -31,15 +32,15 @@ public class FilmeAvaliacaoController {
    }
 
     @GetMapping
-    public Flux<ResponseEntity<FilmeAvaliacao>> findAll(){
-        return filmesAvaliacaoService.findAll()
-                .map(filme -> new ResponseEntity<FilmeAvaliacao>(
-                filme, HttpStatus.OK));
+    public Flux<FilmeAvaliacao> findAll(){
+        return filmesAvaliacaoService.findAll();
+
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity <FilmeAvaliacao>> findById(@PathVariable String id){
+    public Mono<ResponseEntity <FilmeAvaliacao>> findById(@PathVariable("id") String id){
         return filmesAvaliacaoService.findById(id)
-                .map(filme-> new ResponseEntity<>(filme, HttpStatus.OK));
+                .map(filme-> new ResponseEntity<>(filme, HttpStatus.OK))
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

@@ -27,6 +27,14 @@ public class FilmeAvaliacao {
         this.comentario = comentario;
     }
 
+    public String getAvaliacaoId() {
+        return avaliacaoId;
+    }
+
+    public void setAvaliacaoId(String avaliacaoId) {
+        this.avaliacaoId = avaliacaoId;
+    }
+
     public String getUsuarioId() {
         return usuarioId;
     }

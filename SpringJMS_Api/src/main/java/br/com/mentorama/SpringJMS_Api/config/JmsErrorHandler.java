@@ -7,7 +7,7 @@ import org.springframework.util.ErrorHandler;
 public class JmsErrorHandler implements ErrorHandler {
     @Override
     public void handleError(Throwable throwable) {
-        System.out.println("Erro ao processar messagem" +
+        System.out.println("Erro ao processar publicação" +
                 throwable.getMessage());
     }
 }

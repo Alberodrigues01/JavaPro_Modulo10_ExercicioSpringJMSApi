@@ -36,9 +36,9 @@ public class JMSConfiguration {
 
         factory.setPubSubDomain(true);
 
-       configurer.configure(factory, connectionFactory);
+        configurer.configure(factory, connectionFactory);
 
-       return factory;
+        return factory;
     }
 
     @Bean
