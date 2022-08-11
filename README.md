@@ -12,7 +12,7 @@ Utilizar também a interface gráfica do MongoDB: Mongo Compass. Através da int
 e collections <@Documents>. Observar que deve ser usado os mesmos username e password que foram utilizados na instação do MongoDB no Docker para a criação
 da conexão através do Mongo Compass.
 O MongoDB funcionará na porta tradicional 27017 e o ActiveMQ na porta 61616.
-Observar @Annotation requeridas.
+Observa as @Annotation`s requeridas.
 Não utilizamos a Application "extendendo" a especificação "AbstractReactiveMongoConfiguration". Utilizamos a especificação completa de todas as variáveis de 
 mapeamento do MongoDB no arquivo application.properties.
 A API em si é um CRUD simples de envio de avaliações (notas) sobre filmes.
